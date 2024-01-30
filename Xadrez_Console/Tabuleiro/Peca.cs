@@ -9,9 +9,9 @@ namespace tabuleiro
         public int QuantMovimento { get; protected set; }
         public Tabuleiro tab { get; set; }
 
-        public Peca(Posicao posicao, Color color, Tabuleiro tabuleiro)
+        public Peca(Tabuleiro tabuleiro, Color color)
         {
-            Posicao = posicao;
+            Posicao = null;
             Color = color;
             tab = tabuleiro;
             QuantMovimento = 0; 
