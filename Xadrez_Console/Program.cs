@@ -7,21 +7,23 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        PosicaoXadrez posx = new PosicaoXadrez('a', 1);
+        /*PosicaoXadrez posx = new PosicaoXadrez('a', 1);
         Console.WriteLine(posx);
-        Console.WriteLine(posx.ToPosicao());
+        Console.WriteLine(posx.ToPosicao());*/
 
 
         // Posicao p = new Posicao(3, 4);
         //Console.WriteLine("Posição: " + p);
-        /*try
+        try
         {
             Tabuleiro tab = new Tabuleiro(8, 8);
 
 
             tab.ColocarPeca(new Torre(tab, Color.Black), new Posicao(0, 0));
             tab.ColocarPeca(new Torre(tab, Color.Black), new Posicao(1, 3));
-            tab.ColocarPeca(new Rei(tab, Color.Black), new Posicao(0, 0));
+            tab.ColocarPeca(new Rei(tab, Color.Black), new Posicao(0, 1));
+
+            tab.ColocarPeca(new Rei(tab, Color.White), new Posicao(7, 2));
 
 
 
@@ -32,7 +34,7 @@ internal class Program
         catch (TabuleiroException e)
         {
             Console.WriteLine("Error in Tabuleiro! " + e.Message);
-        }*/
+        }
 
 
 
