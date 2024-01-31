@@ -7,9 +7,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        PosicaoXadrez posx = new PosicaoXadrez('a', 1);
+        Console.WriteLine(posx);
+        Console.WriteLine(posx.ToPosicao());
+
+
         // Posicao p = new Posicao(3, 4);
         //Console.WriteLine("Posição: " + p);
-        try
+        /*try
         {
             Tabuleiro tab = new Tabuleiro(8, 8);
 
@@ -27,7 +32,7 @@ internal class Program
         catch (TabuleiroException e)
         {
             Console.WriteLine("Error in Tabuleiro! " + e.Message);
-        }
+        }*/
 
 
 
