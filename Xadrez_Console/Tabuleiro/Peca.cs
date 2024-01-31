@@ -2,7 +2,9 @@
 
 namespace tabuleiro
 {
-    internal class Peca
+    internal class Peca // É A CLASSE GENÉRICA DAS PEÇAS,
+                        // AS PEÇAS (SUBCLASSES) USARÃO OS ATRIBUTOS DESSA CLASSE
+                        // COMO HERANÇA
     {
         public Posicao Posicao { get; set; }
         public Color Color { get; protected set; }
