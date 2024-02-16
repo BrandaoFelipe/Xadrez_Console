@@ -2,49 +2,40 @@
 using tabuleiro;
 using xadrez;
 
+namespace xadrez_console {
+    class Program {
+        static void Main(string[] args) {
 
+            try {
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-internal class Program
-{
-    private static void Main(string[] args)
-    {     
-        try
-        {
-            PartidaDeXadrez partida = new PartidaDeXadrez();
+                while (!partida.terminada) {
 
-            while (!partida.Terminada)
-            {
-                Console.Clear();
-                Tela.ImprimirTabuleiro(partida.tab);
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
-                Console.WriteLine();
-                Console.Write("Origem: ");
-                Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
 
-                bool[,] PosicoesPossiveis = partida.tab.peca(origem).MovimentosPossiveis();
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
-                Console.Clear();
-                Tela.ImprimirTabuleiro(partida.tab, PosicoesPossiveis);
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
-                Console.Write("Destino: ");
-                Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                    Console.WriteLine();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                partida.ExecutarMovimento(origem, destino);
+                    partida.executaMovimento(origem, destino);
+                }
+
+            }
+            catch (TabuleiroException e) {
+                Console.WriteLine(e.Message);
             }
 
-
-
-            
+            Console.ReadLine();
         }
-        catch (TabuleiroException e)
-        {
-            Console.WriteLine("Error in Tabuleiro! " + e.Message);
-        }
-
-
-
-
-
-
     }
 }
