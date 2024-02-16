@@ -6,34 +6,49 @@ namespace xadrez
 {
     internal class Tela
     {
-        public static void ImprimirTabuleiro(Tabuleiro tab) //MÉTODO STATIC NÃO RETORNA VALOR, E NÃO DEPENDE DE VALORES,
-                                                            //EXEMPLO CALCULADORA QUE NÃO PRECISA DE ENTRADA DE DADOS,
-                                                            //TODO O MÉTODO APLICADO AQUI SERVE PARA LER A MATRIZ E
-                                                            //IMPRIMIR NO CONSOLE COM O FORMATO ESTABELECIDO.
-                                                            //A MATRIZ (PECA[,]) FOI POSTA COMO PRIVATE PARA NÃO SER ACESSADA.
-                                                            //A FORMA DE ACESSAR OS DADOS É ATRAVÉS DE UM
-                                                            //MÉTODO DENTRO DA PRÓPRIA CLASSE.
+        public static void ImprimirTabuleiro(Tabuleiro tab) 
         {
-
             for (int i = 0; i < tab.Linhas; i++)
             {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (tab.peca(i, j) == null) //AQUI NESSA ESTRUTURA CONDICIONAL ESTÁ O MÉTODO (TAB.PECA) QUE ACESSA A MATRIZ).
-                    {
-                        Console.Write("- ");
-                    }
-                    else
-                    {
-                        ImprimirPeca(tab.peca(i, j));
-                        Console.Write(" ");
-                    }
+                    ImprimirPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
         }
+
+        public static void ImprimirTabuleiro(Tabuleiro tab, bool [,] PosicoesPossiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+            
+            
+            for (int i = 0; i < tab.Linhas; i++)
+            {
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < tab.Colunas; j++)
+                {
+                    if (PosicoesPossiveis[i,j] == true)
+                    {
+                        Console.BackgroundColor = fundoAlterado;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = fundoOriginal;
+                    }
+
+                    ImprimirPeca(tab.peca(i, j));
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = fundoOriginal;
+        }
+
+
 
         public static PosicaoXadrez LerPosicaoXadrez()
         {
@@ -45,16 +60,25 @@ namespace xadrez
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.Color == Color.White)
+            if (peca == null)
             {
-                Console.Write(peca);
+                Console.Write("- ");
             }
             else
             {
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
+
+                if (peca.Color == Color.White)
+                {
+                    Console.Write(peca);
+                }
+                else
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
+                }
+                Console.Write(" ");
             }
         }
     }

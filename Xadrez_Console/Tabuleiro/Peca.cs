@@ -2,9 +2,7 @@
 
 namespace tabuleiro
 {
-    internal class Peca // É A CLASSE GENÉRICA DAS PEÇAS,
-                        // AS PEÇAS (SUBCLASSES) USARÃO OS ATRIBUTOS DESSA CLASSE
-                        // COMO HERANÇA
+    internal abstract class Peca 
     {
         public Posicao Posicao { get; set; }
         public Color Color { get; protected set; }
@@ -18,6 +16,8 @@ namespace tabuleiro
             tab = tabuleiro;
             QuantMovimento = 0; 
         }
+
+        public abstract bool[,] MovimentosPossiveis();
 
         public void IncrementarMovimento()
         {
