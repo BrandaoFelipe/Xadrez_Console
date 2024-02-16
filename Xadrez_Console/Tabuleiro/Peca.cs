@@ -28,7 +28,6 @@
             {
                 for (int j = 0; j < tab.linhas; j++)
                 {
-
                     if (mat[i, j])
                     {
                         return true;
