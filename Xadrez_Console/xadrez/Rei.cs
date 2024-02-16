@@ -9,7 +9,7 @@ namespace xadrez {
         public override string ToString() {
             return "R";
         }
-
+        
         private bool podeMover(Posicao pos) {
             Peca p = tab.peca(pos);
             return p == null || p.cor != cor;
